@@ -1,0 +1,28 @@
+-- __init__.scpl - HTTP Library for SCPL
+
+(function http-request (method url headers body timeout)
+    (return (HTTP-request method url headers body timeout)))
+
+(function http-get (url headers timeout)
+    (return (HTTP-get url headers timeout)))
+
+(function http-post (url body headers timeout)
+    (return (HTTP-post url body headers timeout)))
+
+(function http-ok? (value)
+    (return (ok? value)))
+
+(function http-error? (value)
+    (return (error? value)))
+
+(function http-status (value)
+    (return (dict-get (unwrap value (dict)) 'status' nil)))
+
+(function http-body (value)
+    (return (dict-get (unwrap value (dict)) 'body' nil)))
+
+(function http-headers (value)
+    (return (dict-get (unwrap value (dict)) 'headers' (dict))))
+
+(function http-json (value)
+    (return (JSON-parse (dict-get (unwrap value (dict)) 'body' ''))))
